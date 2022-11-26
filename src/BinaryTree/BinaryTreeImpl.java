@@ -296,6 +296,9 @@ public class BinaryTreeImpl implements BinaryTree{
         printSingleChild(root.right,root);
     }
 
+    /**
+     * --------------------------------------------do below code -------------------------------------------------- *
+     */
     @Override
     public void pathToLeafFromRoot(Node node, String path, int sum, int low, int high) {
 
@@ -342,21 +345,36 @@ public class BinaryTreeImpl implements BinaryTree{
 
     @Override
     public int sumOfBst(Node node) {
-        return 0;
+        if (node==null) return 0;
+        int sum = node.data+sumOfBst(node.left)+sumOfBst(node.right);
+        return sum;
     }
 
     @Override
     public int maxOfBst(Node node) {
-        return 0;
+        if (node==null) return Integer.MIN_VALUE;
+        int max = node.data;
+        int maxTemp = maxOfBst(node.right);
+        return Math.max(max,maxTemp);
     }
 
     @Override
     public int minOfBst(Node node) {
-        return 0;
+        if (node==null) return Integer.MAX_VALUE;
+        int min = node.data;
+        int minTemp = minOfBst(node.left);
+        return Math.min(minTemp,min);
     }
 
     @Override
-    public boolean findInBst(Node node) {
+    public boolean findInBst(Node node,int data) {
+        if (node==null) return false;
+        if (node.data==data) return true;
+        else if (node.data<data) {
+            return findInBst(node.right,data);
+        } else if (node.data>data) {
+            return findInBst(node.left,data);
+        }
         return false;
     }
 
@@ -402,8 +420,29 @@ public class BinaryTreeImpl implements BinaryTree{
 
     @Override
     public Node removeNodeBst(Node node, int data) {
+        if (node.data==data){
+            node=removeNode(node);
+        } else if (node.data<data) {
+            node.right=removeNodeBst(node.right,data);
+        } else {
+            node.left=removeNodeBst(node.left,data);
+        }
+        return node;
+    }
 
-        return null;
+    private Node removeNode(Node node) {
+        if (node.left!=null && node.right!=null){
+            int max = max(node.left);
+            node.data=max;
+            node.left=removeNodeBst(node.left,max);
+            return node;
+        } else if (node.left!=null) {
+            return node.left;
+        } else if (node.right!=null) {
+            return node.right;
+        } else {
+            return null;
+        }
     }
 
     private BstPenta getLargestBstSize(Node root) {

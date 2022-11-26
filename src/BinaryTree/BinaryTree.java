@@ -45,7 +45,7 @@ public interface BinaryTree {
     int sumOfBst(Node node);
     int maxOfBst(Node node);
     int minOfBst(Node node);
-    boolean findInBst(Node node);
+    boolean findInBst(Node node,int data);
     Node replaceWithSumOfLarger(Node node);
     void printInBetween(Node node);
     int lca(Node node);

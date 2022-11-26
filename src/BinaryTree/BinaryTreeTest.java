@@ -16,7 +16,7 @@ public class BinaryTreeTest {
 //        System.out.println("sum of Btree : "+obj.sum(root));
 //        System.out.println("max of Btree is : "+obj.max(root));
 //        System.out.println("height of Btree : "+obj.height(root));
-        obj.levelOrder(root);
+//        obj.levelOrder(root);
 //        obj.levelOrder2(root);
 //        obj.levelOrder3(root);
 //        System.out.println(obj.find(root,50)==true?"present":"not present");
@@ -34,7 +34,14 @@ public class BinaryTreeTest {
 //        obj.iterativeTraversal(root);
 //        obj.levelOrder(obj.removeLeaves(root));
 //        obj.printSingleChild(root,null);
-        System.out.println(obj.isBST(root));
-        System.out.println(obj.largestBST(root));
+//        System.out.println(obj.isBST(root));
+//        System.out.println(obj.largestBST(root));
+//        obj.removeNodeBst(root,25);
+//        obj.levelOrder3(root);
+//        System.out.println(obj.maxOfBst(root));
+//        System.out.println(obj.minOfBst(root));
+//        System.out.println(obj.findInBst(root,70));
+//        System.out.println(obj.sumOfBst(root));
+
     }
 }
