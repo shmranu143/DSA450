@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Stack;
 
 public class BinaryTreeImpl implements BinaryTree{
-
     @Override
     public Node construct(List<Integer> list) {
         Stack<Pair> st = new Stack<>();
@@ -37,7 +36,6 @@ public class BinaryTreeImpl implements BinaryTree{
         }
         return root.node;
     }
-
     @Override
     public void display(Node node) {
         if (node==null) return;
@@ -45,13 +43,11 @@ public class BinaryTreeImpl implements BinaryTree{
         display(node.left);
         display(node.right);
     }
-
     @Override
     public int size(Node node) {
         if (node==null) return 0;
         return size(node.left)+size(node.right)+1;
     }
-
     @Override
     public int sum(Node node) {
         if (node==null) return 0;
@@ -62,7 +58,6 @@ public class BinaryTreeImpl implements BinaryTree{
         // 1 line code
 //        return (node==null?0:sum(node.left)+sum(node.right)+node.data);
     }
-
     @Override
     public int max(Node node) {
         if (node==null) return 0;
@@ -71,7 +66,6 @@ public class BinaryTreeImpl implements BinaryTree{
         max = Math.max(max(node.right),max);
         return max;
     }
-
     @Override
     public int height(Node node) {
         if (node==null) return 0;
@@ -79,7 +73,6 @@ public class BinaryTreeImpl implements BinaryTree{
         int rh = height(node.right);
         return Math.max(lh,rh)+1;
     }
-
     @Override
     public void levelOrder(Node node) {
         LinkedList<Node> queue = new LinkedList<>();
@@ -95,7 +88,6 @@ public class BinaryTreeImpl implements BinaryTree{
             System.out.println();
         }
     }
-
     @Override
     public void levelOrder2(Node node){
         LinkedList<Node> queue = new LinkedList<>();
@@ -113,7 +105,6 @@ public class BinaryTreeImpl implements BinaryTree{
             if (peek.right!=null) queue.addLast(peek.right);
         }
     }
-
     @Override
     public void levelOrder3(Node node) {
         LinkedList<Node> pq = new LinkedList<>();
@@ -131,7 +122,6 @@ public class BinaryTreeImpl implements BinaryTree{
             }
         }
     }
-
     @Override
     public boolean find(Node node, int data) {
         if (node==null) return false;
@@ -140,7 +130,6 @@ public class BinaryTreeImpl implements BinaryTree{
         if(find(node.right,data)) return true;
         return false;
     }
-
     @Override
     public ArrayList<Node> nodeToRootPath(Node node, int data) {
         ArrayList<Node> list = new ArrayList<>();
@@ -163,7 +152,6 @@ public class BinaryTreeImpl implements BinaryTree{
         }
         return new ArrayList<>();
     }
-
     @Override
     public void printKLevelDown(Node node, int k) {
         if(node==null || k<0) return;
@@ -174,7 +162,6 @@ public class BinaryTreeImpl implements BinaryTree{
         printKLevelDown(node.right,k-1);
         return;
     }
-
     @Override
     public void printKNodesFar(Node root, int data, int k) {
         ArrayList<Node> list = nodeToRootPath(root,data);
@@ -183,7 +170,6 @@ public class BinaryTreeImpl implements BinaryTree{
             System.out.println();
         }
     }
-
     @Override
     public List<Integer> preorder(Node root, List<Integer> list) {
         if (root==null) return list;
@@ -192,7 +178,6 @@ public class BinaryTreeImpl implements BinaryTree{
         preorder(root.right,list);
         return list;
     }
-
     @Override
     public List<Integer> inorder(Node root, List<Integer> list) {
         if (root==null) return list;
@@ -201,7 +186,6 @@ public class BinaryTreeImpl implements BinaryTree{
         preorder(root.right,list);
         return list;
     }
-
     @Override
     public List<Integer> postorder(Node root, List<Integer> list) {
         if (root==null) return list;
@@ -210,7 +194,6 @@ public class BinaryTreeImpl implements BinaryTree{
         list.add(root.data);
         return list;
     }
-
     public void printKLevelDownWithBlocker(Node node, int k, Node blocker) {
         if(node==null || k<0 || node==blocker) return;
         if (k==0){
@@ -220,7 +203,6 @@ public class BinaryTreeImpl implements BinaryTree{
         printKLevelDown(node.right,k-1);
         return;
     }
-
 
     @Override
     public void iterativeTraversal(Node root) {
@@ -250,7 +232,6 @@ public class BinaryTreeImpl implements BinaryTree{
         System.out.println("inorder: "+in);
         System.out.println("postorder: "+post);
     }
-
     @Override
     public Node normalToLeftClone(Node root) {
         if (root==null) return null;
@@ -262,7 +243,6 @@ public class BinaryTreeImpl implements BinaryTree{
         root.left=newNode;
         return root;
     }
-
     @Override
     public Node leftCloneToNormal(Node root) {
         if (root==null) return null;
@@ -271,7 +251,6 @@ public class BinaryTreeImpl implements BinaryTree{
         leftCloneToNormal(root.right);
         return root;
     }
-
     @Override
     public Node removeLeaves(Node root) {
         if (root==null) return null;
@@ -282,7 +261,6 @@ public class BinaryTreeImpl implements BinaryTree{
         root.right = removeLeaves(root.right);
         return root;
     }
-
     @Override
     public void printSingleChild(Node root, Node parent) {
         if (root==null) return;
@@ -295,7 +273,6 @@ public class BinaryTreeImpl implements BinaryTree{
         printSingleChild(root.left,root);
         printSingleChild(root.right,root);
     }
-
     /**
      * --------------------------------------------do below code -------------------------------------------------- *
      */
@@ -303,32 +280,26 @@ public class BinaryTreeImpl implements BinaryTree{
     public void pathToLeafFromRoot(Node node, String path, int sum, int low, int high) {
 
     }
-
     @Override
     public int diameter(Node node) {
         return 0;
     }
-
     @Override
     public DiaPair diameter2(Node node) {
         return null;
     }
-
     @Override
     public int tiltOfBTree(Node root) {
         return 0;
     }
-
     @Override
     public boolean isBalanced(Node root) {
         return false;
     }
-
     @Override
     public boolean isBST(Node root) {
         return isBst(root,new BstTriplet(Integer.MIN_VALUE,Integer.MAX_VALUE));
     }
-
     @Override
     public int largestBST(Node root) {
 
@@ -337,19 +308,16 @@ public class BinaryTreeImpl implements BinaryTree{
 //        return obj.largestBstNodeSize;
         return 0;
     }
-
     @Override
     public Node SortedArrayToBst(int[] arr) {
         return null;
     }
-
     @Override
     public int sumOfBst(Node node) {
         if (node==null) return 0;
         int sum = node.data+sumOfBst(node.left)+sumOfBst(node.right);
         return sum;
     }
-
     @Override
     public int maxOfBst(Node node) {
         if (node==null) return Integer.MIN_VALUE;
@@ -357,7 +325,6 @@ public class BinaryTreeImpl implements BinaryTree{
         int maxTemp = maxOfBst(node.right);
         return Math.max(max,maxTemp);
     }
-
     @Override
     public int minOfBst(Node node) {
         if (node==null) return Integer.MAX_VALUE;
@@ -365,7 +332,6 @@ public class BinaryTreeImpl implements BinaryTree{
         int minTemp = minOfBst(node.left);
         return Math.min(minTemp,min);
     }
-
     @Override
     public boolean findInBst(Node node,int data) {
         if (node==null) return false;
@@ -377,32 +343,26 @@ public class BinaryTreeImpl implements BinaryTree{
         }
         return false;
     }
-
     @Override
     public Node replaceWithSumOfLarger(Node node) {
         return null;
     }
-
     @Override
     public void printInBetween(Node node) {
 
     }
-
     @Override
     public int lca(Node node) {
         return 0;
     }
-
     @Override
     public void targetSumPair(Node node, int target) {
 
     }
-
     @Override
     public void targetSumPair2(Node node, int target) {
 
     }
-
     @Override
     public Node addNodeBst(Node node, int data) {
         if (node==null){
@@ -417,7 +377,6 @@ public class BinaryTreeImpl implements BinaryTree{
         }
         return node;
     }
-
     @Override
     public Node removeNodeBst(Node node, int data) {
         if (node.data==data){
@@ -429,7 +388,6 @@ public class BinaryTreeImpl implements BinaryTree{
         }
         return node;
     }
-
     private Node removeNode(Node node) {
         if (node.left!=null && node.right!=null){
             int max = max(node.left);
@@ -444,7 +402,6 @@ public class BinaryTreeImpl implements BinaryTree{
             return null;
         }
     }
-
     private BstPenta getLargestBstSize(Node root) {
         if (root == null) {
             return new BstPenta();
@@ -471,13 +428,11 @@ public class BinaryTreeImpl implements BinaryTree{
         }
         return mt;
     }
-
     private boolean isBst(Node root, BstTriplet bstTriplet) {
         if (root==null) return true;
         if (root.data<bstTriplet.min || root.data>bstTriplet.max) return false;
         return isBst(root.left,new BstTriplet(bstTriplet.min,root.data)) && isBst(root.right,new BstTriplet(root.data,bstTriplet.max));
     }
-
     class BstPenta{
         int min= Integer.MAX_VALUE;
         int max=Integer.MIN_VALUE;
@@ -503,7 +458,6 @@ public class BinaryTreeImpl implements BinaryTree{
             this.dia=0;
         }
     }
-
     class Node {
         int data ;
         Node left;
@@ -522,5 +476,4 @@ public class BinaryTreeImpl implements BinaryTree{
             this.state=state;
         }
     }
-
 }

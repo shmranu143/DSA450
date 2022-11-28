@@ -5,7 +5,6 @@ import java.util.List;
 import BinaryTree.BinaryTreeImpl.Node;
 
 public interface BinaryTree {
-
     public Node construct(List<Integer> list);
     public void display(BinaryTreeImpl.Node node);
     int size(Node node);

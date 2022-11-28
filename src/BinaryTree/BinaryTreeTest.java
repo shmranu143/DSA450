@@ -42,6 +42,6 @@ public class BinaryTreeTest {
 //        System.out.println(obj.minOfBst(root));
 //        System.out.println(obj.findInBst(root,70));
 //        System.out.println(obj.sumOfBst(root));
-
+        System.out.println();
     }
 }
