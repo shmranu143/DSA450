@@ -32,7 +32,7 @@ public interface BinaryTree {
     void pathToLeafFromRoot(Node node , String path , int sum , int low , int high);
     int diameter(Node node);
     BinaryTreeImpl.DiaPair diameter2(Node node);
-    int tiltOfBTree(Node root); // try two approaches (1. traverse and tweek , 2. pair wala)
+    BinaryTreeImpl.TiltTriplet tiltOfBTree(Node root); // try two approaches (1. traverse and tweek , 2. pair wala)
     boolean isBalanced(Node root);  // try two approaches (1. traverse and tweek , 2. pair wala)
 
     /**
@@ -52,4 +52,7 @@ public interface BinaryTree {
     void targetSumPair2(Node node, int target); // 2 stack approach (optimised)
     Node addNodeBst(Node node,int data);
     Node removeNodeBst(Node node,int data);
+    Node cuntructTreeFromPreAndIn(int[] preorder , int[] inorder);
+    boolean isCompleteBT(Node node);
+
 }

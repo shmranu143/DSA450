@@ -273,29 +273,70 @@ public class BinaryTreeImpl implements BinaryTree{
         printSingleChild(root.left,root);
         printSingleChild(root.right,root);
     }
+    @Override
+    public void pathToLeafFromRoot(Node node, String path, int sum, int low, int high) {
+        if (node==null) return;
+        if (node.left==null && node.right==null){
+            sum+=node.data;
+            if (sum>=low && sum<=high)
+                System.out.println(path+" "+node.data);
+            return;
+        }
+        pathToLeafFromRoot(node.left,path+" "+node.data,sum+node.data,low,high);
+        pathToLeafFromRoot(node.right,path+" "+node.data,sum+node.data,low,high);
+    }
+
+    int dia=0;
+    @Override
+    public int diameter(Node node) {
+        if (node==null) return -1;  // in terms of edge
+        int lh = diameter(node.left);
+        int rh = diameter(node.right);
+        int ht = Math.max(lh,rh)+1;
+        if (dia<lh+rh+2){
+            dia = lh+rh+2;
+        }
+        return ht;
+    }
+    @Override
+    public DiaPair diameter2(Node node) {
+        if (node==null){
+            return new DiaPair();
+        }
+        DiaPair ld = diameter2(node.left);
+        DiaPair rd = diameter2(node.right);
+        DiaPair mp = new DiaPair();
+        mp.ht=Math.max(ld.ht, rd.ht)+1;
+        mp.dia= ld.ht+ rd.ht+2> mp.dia?ld.ht+ rd.ht+2: mp.dia;
+        return mp;
+    }
     /**
      * --------------------------------------------do below code -------------------------------------------------- *
      */
     @Override
-    public void pathToLeafFromRoot(Node node, String path, int sum, int low, int high) {
-
+    public TiltTriplet tiltOfBTree(Node root) {
+        if (root==null) return new TiltTriplet();
+        TiltTriplet lt=tiltOfBTree(root.left);
+        TiltTriplet rt=tiltOfBTree(root.right);
+        TiltTriplet mt = new TiltTriplet();
+        mt.sum=lt.sum+ rt.sum+root.data;
+        mt.nodeTilt = Math.abs(lt.sum- rt.sum);
+        mt.treeTilt=mt.nodeTilt+lt.treeTilt+rt.treeTilt;
+        return mt;
     }
     @Override
-    public int diameter(Node node) {
-        return 0;
-    }
-    @Override
-    public DiaPair diameter2(Node node) {
-        return null;
-    }
-    @Override
-    public int tiltOfBTree(Node root) {
-        return 0;
-    }
-    @Override
-    public boolean isBalanced(Node root) {
+    public boolean isBalanced(Node root) { // if left height and right height has at most 1 difference
+        heightBalanced(root);
         return false;
     }
+
+    private int heightBalanced(Node root) {
+        if (root==null) return 0;
+        int lh = heightBalanced(root.left);
+        int rh = heightBalanced(root.right);
+        return 0;
+    }
+
     @Override
     public boolean isBST(Node root) {
         return isBst(root,new BstTriplet(Integer.MIN_VALUE,Integer.MAX_VALUE));
@@ -388,6 +429,23 @@ public class BinaryTreeImpl implements BinaryTree{
         }
         return node;
     }
+
+    /**
+     * imp**
+     * @param preorder
+     * @param inorder
+     * @return
+     */
+    @Override
+    public Node cuntructTreeFromPreAndIn(int[] preorder, int[] inorder) {
+        return null;
+    }
+
+    @Override
+    public boolean isCompleteBT(Node node) {
+        return false;
+    }
+
     private Node removeNode(Node node) {
         if (node.left!=null && node.right!=null){
             int max = max(node.left);
@@ -457,6 +515,14 @@ public class BinaryTreeImpl implements BinaryTree{
             this.ht=-1;
             this.dia=0;
         }
+
+        @Override
+        public String toString() {
+            return "DiaPair{" +
+                    "ht=" + ht +
+                    ", dia=" + dia +
+                    '}';
+        }
     }
     class Node {
         int data ;
@@ -474,6 +540,25 @@ public class BinaryTreeImpl implements BinaryTree{
         Pair(Node node, int state){
             this.node=node;
             this.state=state;
+        }
+    }
+    class TiltTriplet{
+        int sum ;
+        int nodeTilt;
+        int treeTilt;
+        public TiltTriplet(){
+            this.sum=0;
+            this.nodeTilt=0;
+            this.treeTilt=0;
+        }
+
+        @Override
+        public String toString() {
+            return "TiltTriplet{" +
+                    "sum=" + sum +
+                    ", nodeTilt=" + nodeTilt +
+                    ", treeTilt=" + treeTilt +
+                    '}';
         }
     }
 }

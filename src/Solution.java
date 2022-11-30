@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.*;
 
 class Solution {
     public static void main (String args[]){
@@ -14,6 +14,7 @@ class Solution {
         }
         System.out.println(map);
     }
+
 
 
 }

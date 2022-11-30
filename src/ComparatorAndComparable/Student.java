@@ -1,5 +1,6 @@
 package ComparatorAndComparable;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
@@ -56,7 +57,7 @@ public class Student implements Comparable<Student> {
         MyGenericPriorityQueue<Student> pqName = new MyGenericPriorityQueue<>();
         MyGenericPriorityQueue<Student> pqWeight = new MyGenericPriorityQueue<>(new StudentWeightComparator());
         MyGenericPriorityQueue<Student> pqRevWeight = new MyGenericPriorityQueue<>(new ReverseWeightComparator());
-        MyGenericPriorityQueue<Student> pqMarks = new MyGenericPriorityQueue<>(new StudentMarksComparator());
+        MyGenericPriorityQueue<Student> pqMarks = new MyGenericPriorityQueue<>(Collections.reverseOrder(new StudentMarksComparator()));
         MyGenericPriorityQueue<Student> pqHieght = new MyGenericPriorityQueue<>(new StudentHeightComparator());
         for (Student student:students){
             pqHieght.add(student);

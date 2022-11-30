@@ -42,6 +42,10 @@ public class BinaryTreeTest {
 //        System.out.println(obj.minOfBst(root));
 //        System.out.println(obj.findInBst(root,70));
 //        System.out.println(obj.sumOfBst(root));
-        System.out.println();
+//        obj.pathToLeafFromRoot(root,"",0,70,450);
+//        obj.diameter(root);
+//        System.out.println(obj.dia);
+//        System.out.println(obj.diameter2(root));
+        System.out.println(obj.tiltOfBTree(root));
     }
 }
