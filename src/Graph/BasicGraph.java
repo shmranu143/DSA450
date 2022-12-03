@@ -43,13 +43,24 @@ public class BasicGraph {
         graph[6].add(new Edge(6,4,8));
         graph[6].add(new Edge(6,5,3));
 
-        for (int v=0;v< graph.length;v++){
-//            System.out.println(graph[v]);
-            int temp = graph[v].size();
-            while (temp-->0){
-                System.out.print(graph[v].get(temp).v1+" "+graph[v].get(temp).v2+" "+graph[v].get(temp).wt+" ");
-            }
-            System.out.println();
-        }
+//        for (int v=0;v< graph.length;v++){
+////            System.out.println(graph[v]);
+//            int temp = graph[v].size();
+//            while (temp-->0){
+//                System.out.print(graph[v].get(temp).v1+" "+graph[v].get(temp).v2+" "+graph[v].get(temp).wt+" ");
+//            }
+//            System.out.println();
+//        }
+        GraphImpl obj = new GraphImpl();
+//        obj.printAllPath(graph,new boolean[graph.length],0,6,"0");
+//        System.out.println(obj.hasPath(graph,new boolean[graph.length],0,6));
+//        obj.printSmallestPath(graph,new boolean[graph.length],0,6,"0",0);
+//        System.out.println("smallestPath : "+obj.smallestPath);
+//        obj.printLargestPath(graph,new boolean[graph.length],0,6,"0",0);
+//        System.out.println("largestPath : "+obj.largestPath);
+        obj.printJustLargerPath(graph,new boolean[graph.length],48,0,6,"0",0);
+        System.out.println("just larger path than 48 is: "+obj.smallestPath);
+        obj.printJustSmallerPath(graph,new boolean[graph.length],50,0,6,"0",0);
+        System.out.println("just smaller path than 50 is: "+obj.largestPath);
     }
 }
