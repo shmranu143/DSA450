@@ -5,6 +5,7 @@ import Graph.BasicGraph.Edge;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
+import java.util.Stack;
 
 public class GraphImpl implements Graph{
     @Override
@@ -157,9 +158,7 @@ public class GraphImpl implements Graph{
             Dual rem = queue.remove();
             if (visited[rem.vtx]==true) continue;
             visited[rem.vtx]=true;
-
             System.out.println(rem.vtx+"@"+rem.psf);
-
             for (int i=0;i<graph[rem.vtx].size();i++){
                 Edge e = graph[rem.vtx].get(i);
                 if (visited[e.v2]==false){
@@ -241,6 +240,62 @@ public class GraphImpl implements Graph{
                 }
             }
         }
+
+    }
+
+    @Override
+    public void printHamiltonianPathAndCycle(ArrayList<Edge>[] graph) {
+        boolean [] visited = new boolean[graph.length];
+        printHpath(graph,visited,new Dual(0,"0"),0);
+    }
+
+    private void printHpath(ArrayList<Edge>[] graph, boolean[] visited,Dual source,int firstVtx) {
+        if (visited[source.vtx]==true){
+            return;
+        }
+        if (source.psf.length()==graph.length){
+            boolean flag=false ;
+            for (Edge e : graph[source.vtx]){
+                if (e.v2==firstVtx){
+                    flag=true;
+                    System.out.println("Hamiltonian cycle: "+source.psf);
+                    break;
+                }
+            }
+            if (flag==false) System.out.println("Hamiltonian path: "+source.psf);
+        }
+        visited[source.vtx]=true;
+        for (Edge e :graph[source.vtx]){
+            printHpath(graph,visited,new Dual(e.v2,source.psf+""+e.v2),firstVtx);
+        }
+        visited[source.vtx]=false;
+    }
+
+    @Override
+    public void iterativeDFS(ArrayList<Edge>[] graph) {
+        boolean[] visited = new boolean[graph.length];
+        Stack<Dual> stack = new Stack<>();
+        stack.push(new Dual(graph[0].get(0).v1,""+graph[0].get(0).v1));
+        while (!stack.isEmpty()){
+            Dual rem = stack.pop();
+            if (visited[rem.vtx]==true) continue;
+            visited[rem.vtx]=true;
+            System.out.println(rem.vtx+" @ "+rem.psf);
+            for (Edge e:graph[rem.vtx]){
+                if (visited[e.v2]==false){
+                    stack.push(new Dual(e.v2,rem.psf+e.v2));
+                }
+            }
+        }
+    }
+
+    @Override
+    public void minimumWireToConnectAllVertex(ArrayList<Edge>[] graph) {
+
+    }
+
+    @Override
+    public void topologicalSort() {
 
     }
 

@@ -18,4 +18,10 @@ public interface Graph {
     boolean isCyclic(ArrayList<BasicGraph.Edge>[] graph);
     boolean isBipertite(ArrayList<BasicGraph.Edge>[] graph);
     void printShortestPathInTermsOfWeight(ArrayList<BasicGraph.Edge>[] graph); // **** Djikstra  Algorithm ***** //
+    void printHamiltonianPathAndCycle(ArrayList<BasicGraph.Edge>[] graph);
+    void iterativeDFS(ArrayList<BasicGraph.Edge>[] graph);
+    void minimumWireToConnectAllVertex(ArrayList<BasicGraph.Edge>[] graph);// *** Prims algorithm *** //
+    // topological sort
+    void topologicalSort();
+
 }

@@ -67,7 +67,10 @@ public class BasicGraph {
 //        System.out.println(obj.spreadOfInfection(graph,6,0));
 //        System.out.println(obj.isCyclic(weightedGraph));
 //        System.out.println(obj.isBipertite(graph));
-        obj.printShortestPathInTermsOfWeight(graph);
+//        obj.printShortestPathInTermsOfWeight(weightedGraph);
+//        obj.printHamiltonianPathAndCycle(weightedGraph);
+        obj.iterativeDFS(graph);
+        obj.bfsOfGraph(graph);
     }
 
     private static void printMap(int[][] mapGraph) {
