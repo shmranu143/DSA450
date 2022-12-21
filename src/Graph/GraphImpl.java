@@ -291,7 +291,24 @@ public class GraphImpl implements Graph{
 
     @Override
     public void minimumWireToConnectAllVertex(ArrayList<Edge>[] graph) {
-
+        PriorityQueue<PrimsTriplet> queue = new PriorityQueue<>();
+        boolean [] visited = new boolean[graph.length];
+        queue.add(new PrimsTriplet(graph[0].get(0).v1,0,"0"));
+        while (!queue.isEmpty()){
+            PrimsTriplet rem = queue.remove();
+            // print
+            if (visited[rem.vtx]==true){
+                continue;
+            }
+            System.out.println(rem.vtx+" @ "+rem.psf);
+            visited[rem.vtx]=true;
+            // mark
+            for (Edge e :graph[rem.vtx]){
+                if (visited[e.v2]==false){
+                    queue.add(new PrimsTriplet(e.v2,e.wt,rem.psf+e.v2));
+                }
+            }
+        }
     }
 
     @Override
@@ -398,6 +415,21 @@ public class GraphImpl implements Graph{
         InfectionPair(int vtx, int day){
             this.vtx=vtx;
             this.day=day;
+        }
+    }
+    class PrimsTriplet implements Comparable<PrimsTriplet>{
+        int vtx;
+        int edgeWt;
+        String psf;
+        PrimsTriplet(int vtx,int edgeWt, String psf){
+            this.edgeWt=edgeWt;
+            this.psf=psf;
+            this.vtx=vtx;
+        }
+
+        @Override
+        public int compareTo(PrimsTriplet o) {
+            return this.edgeWt -o.edgeWt;
         }
     }
 }

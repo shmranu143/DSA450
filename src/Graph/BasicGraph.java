@@ -69,8 +69,9 @@ public class BasicGraph {
 //        System.out.println(obj.isBipertite(graph));
 //        obj.printShortestPathInTermsOfWeight(weightedGraph);
 //        obj.printHamiltonianPathAndCycle(weightedGraph);
-        obj.iterativeDFS(graph);
-        obj.bfsOfGraph(graph);
+//        obj.iterativeDFS(graph);
+//        obj.bfsOfGraph(graph);
+        obj.minimumWireToConnectAllVertex(graph);
     }
 
     private static void printMap(int[][] mapGraph) {
