@@ -9,7 +9,8 @@ public class HashmapAndHeapImpl implements HashmapAndHeap{
         HashmapAndHeap obj = new HashmapAndHeapImpl();
         int [] arr = new int[]{0,1,1,0,0,1,1,0,1,1,0};
 //        System.out.println(obj.countSubArrayWithEqualZeroAndOne(arr));
-        System.out.println(obj.countSubarrayWithKSum(new int[]{1,3,5,4,7,1,3,4},8));
+//        System.out.println(obj.countSubarrayWithKSum(new int[]{1,3,5,4,7,1,3,4},8));
+        System.out.println(obj.countSubarrayWithKSumNegativeNumbersAlso(new int[]{1,3,5,4,7,-7,-1,0},8));
     }
     @Override
     public int countSubArrayWithEqualZeroAndOne(int[] arr) {
@@ -48,7 +49,20 @@ public class HashmapAndHeapImpl implements HashmapAndHeap{
 
     @Override
     public int countSubarrayWithKSumNegativeNumbersAlso(int[] arr, int k) {
-        return 0;
+        int preSum = 0;
+        int count = 0;
+        HashMap<Integer,Integer> map = new HashMap<>();
+        map.put(0,1);
+        for (int val:arr){
+            preSum+=val;
+            if (map.containsKey(preSum-k)){
+                count+=map.get(preSum-k);
+                map.put(preSum,map.getOrDefault(preSum,0)+1);
+            } else {
+                map.put(preSum,map.getOrDefault(preSum,0)+1);
+            }
+        }
+        return count;
     }
 
     @Override
