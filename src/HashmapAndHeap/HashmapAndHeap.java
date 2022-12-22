@@ -1,5 +1,7 @@
 package HashmapAndHeap;
 
+import java.util.List;
+
 public interface HashmapAndHeap {
 
     int countSubArrayWithEqualZeroAndOne(int[] arr);
@@ -9,5 +11,7 @@ public interface HashmapAndHeap {
     int countSubarrayDivByK(int []arr, int k);
     int countPairWithKSum(int[] arr, int k);
     boolean hasGroupsSizeX(int[] deck);
+    int validpairs(int[] arr); // valid pair=> a[j]-a[i] = j-i;
+    List<Integer> distictElementInKsizeWindow(int[] arr,int k);
 
 }

@@ -2,6 +2,7 @@ package HashmapAndHeap;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 public class HashmapAndHeapImpl implements HashmapAndHeap{
 
@@ -10,7 +11,8 @@ public class HashmapAndHeapImpl implements HashmapAndHeap{
         int [] arr = new int[]{0,1,1,0,0,1,1,0,1,1,0};
 //        System.out.println(obj.countSubArrayWithEqualZeroAndOne(arr));
 //        System.out.println(obj.countSubarrayWithKSum(new int[]{1,3,5,4,7,1,3,4},8));
-        System.out.println(obj.countSubarrayWithKSumNegativeNumbersAlso(new int[]{1,3,5,4,7,-7,-1,0},8));
+//        System.out.println(obj.countSubarrayWithKSumNegativeNumbersAlso(new int[]{1,3,5,4,7,-7,-1,0},8));
+        System.out.println(obj.countSubarrayWithEqual012(new int[]{0,0,1,2,1,2,0}));
     }
     @Override
     public int countSubArrayWithEqualZeroAndOne(int[] arr) {
@@ -67,11 +69,35 @@ public class HashmapAndHeapImpl implements HashmapAndHeap{
 
     @Override
     public int countSubarrayWithEqual012(int[] arr) {
-        return 0;
+        int c0 = 0,c1=0,c2=0;
+        String gap01_12=0+" # "+0;
+        HashMap<String,Integer> map = new HashMap<>();
+        map.put(gap01_12,1);
+        int count =0;
+        for (int val:arr){
+            if (val==0){
+                c0++;
+            } else if (val==1){
+                c1++;
+            } else {
+                c2++;
+            }
+            int gap01 = c1-c0;
+            int gap12 = c2-c1;
+            gap01_12 = gap01+" # "+gap12;
+            if (map.containsKey(gap01_12)){
+                count+=map.get(gap01_12);
+                map.put(gap01_12,map.get(gap01_12)+1);
+            } else {
+                map.put(gap01_12,1);
+            }
+        }
+        return count;
     }
 
     @Override
     public int countSubarrayDivByK(int[] arr, int k) {
+
         return 0;
     }
 
@@ -98,6 +124,16 @@ public class HashmapAndHeapImpl implements HashmapAndHeap{
             if (value%minVal!=0) return false;
         }
         return true;
+    }
+
+    @Override
+    public int validpairs(int[] arr) {
+        return 0;
+    }
+
+    @Override
+    public List<Integer> distictElementInKsizeWindow(int[] arr, int k) {
+        return null;
     }
 
 }
