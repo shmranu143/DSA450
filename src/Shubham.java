@@ -14,63 +14,112 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.util.*;
 
 public class Shubham {
+
         public static void main(String[] args) {
+            String[] leaves = {"2024-01-01", "2024-01-02", "2024-01-03", "2024-01-04", "2024-01-05", "2024-01-06", "2024-01-07", "2024-01-08", "2024-01-09", "2024-01-10", "2024-01-11", "2024-01-15", "2024-01-16", "2024-01-18", "2024-01-19", "2024-01-20", "2024-01-21", "2024-01-22", "2024-01-23", "2024-01-24", "2024-01-25", "2024-01-26", "2024-01-27", "2024-01-28", "2024-01-30", "2024-01-31"};
 
-
-
-//            if ( true &&
-//                    (true&&true) &&
-//                    (false||true) &&
-//                    (false||true)){
-//                System.out.println("true");
+//            String[] leavesDuringFirstQuiz = getLeavesDuringFirstQuiz(leaves);
+//            String[] leavesDuringSecondQuiz = getLeavesDuringSecondQuiz(leaves);
+//            System.out.println(leaves.length);
+//            System.out.println("Leaves during first quiz:");
+//            System.out.println(leavesDuringFirstQuiz.length);
+//            for (String leave : leavesDuringFirstQuiz) {
+//                System.out.print(leave+",");
 //            }
-//            else System.out.println(false);
-
-
-//            System.out.println(monthName != null ? monthName : "Invalid month abbreviation");
-//            DateTimeFormatter monthFormatter = new DateTimeFormatterBuilder()
-//                    .parseCaseInsensitive()
-//                    .appendPattern("MMM")
-//                    .toFormatter(Locale.ENGLISH);
 //
-//            Month month = Month.from(monthFormatter.parse("MAR"));
-//            System.out.println(month);
-//            String time = "05:30";
-//            LocalDate date = LocalDate.now();
-//            DateTimeFormatter converter = new DateTimeFormatterBuilder()
-//                    .appendPattern("dd-MMM-yyyy").toFormatter();
-//            String datetime = converter.format(date);
-//            datetime += (" "+time);
-//            System.out.println(datetime);
+//            System.out.println("\nLeaves during second quiz:");
+//            System.out.println(leavesDuringSecondQuiz.length);
+//            for (String leave : leavesDuringSecondQuiz) {
+//                System.out.print(leave+",");
+//            }
+            LocalDate date = LocalDate.now();
+            int numberOfDay = date.lengthOfMonth();
+            int diff = numberOfDay-15;
 
-//            System.out.println(getAtachmentForToday("LAED_DXB_SG_SIR_"));
-//            LocalTime time1 = LocalTime.now();
-//            LocalTime nightTime = LocalTime.of(21,04);
-//            LocalTime eod = LocalTime.of(23,59);
-//            if (time1.compareTo(nightTime)<0)
-//                System.out.println("localTime: "+time1);
-//            validatedateFormate("2023-06-01");
-//            Map<Boolean,String> map = utcToist("2300");
-//            System.out.println(map);
-//            System.out.println(LocalDateTime.now());
-//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-YYYY");
-//            System.out.println(formatter.format(LocalDate.now()));
 
-//            LocalDate date = LocalDate.now();
-//            System.out.println(LocalDate.now());
-//            String strDate = LocalDate.now().toString();
-//            System.out.println(LocalDate.parse(strDate).format(DateTimeFormatter.ofPattern("yyyy-MMM-dd")));
-//            String str = "Hi this is shubham jaiswal sending attachment";
-//            byte[] ar = str.getBytes();
-//            System.out.println(ar.toString());
-//            DateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-//            Calendar cal = Calendar.getInstance();
-//            cal.add(Calendar.DAY_OF_MONTH, 5);
-//            String date = formatter.format(cal.getTime());
-//            date += " 23:59";
-//            System.out.println(date);
+        }
 
-    }
+        public  String[] getLeavesDuringFirstQuiz(String[] leaves) {
+            List<String> leavesDuringFirstQuiz = new ArrayList<>();
+            for (String leave : leaves) {
+                int day = Integer.parseInt(leave.split("-")[2]);
+                if (day >= 1 && day <= 15) {
+                    leavesDuringFirstQuiz.add(leave);
+                }
+            }
+            return leavesDuringFirstQuiz.toArray(new String[0]);
+        }
+
+        public  String[] getLeavesDuringSecondQuiz(String[] leaves) {
+            List<String> leavesDuringSecondQuiz = new ArrayList<>();
+            for (String leave : leaves) {
+                int day = Integer.parseInt(leave.split("-")[2]);
+                if (day >= 16) {
+                    leavesDuringSecondQuiz.add(leave);
+                }
+            }
+            return leavesDuringSecondQuiz.toArray(new String[0]);
+        }
+
+
+
+//    public static void main(String[] args) {
+//
+//
+//
+////            if ( true &&
+////                    (true&&true) &&
+////                    (false||true) &&
+////                    (false||true)){
+////                System.out.println("true");
+////            }
+////            else System.out.println(false);
+//
+//
+////            System.out.println(monthName != null ? monthName : "Invalid month abbreviation");
+////            DateTimeFormatter monthFormatter = new DateTimeFormatterBuilder()
+////                    .parseCaseInsensitive()
+////                    .appendPattern("MMM")
+////                    .toFormatter(Locale.ENGLISH);
+////
+////            Month month = Month.from(monthFormatter.parse("MAR"));
+////            System.out.println(month);
+////            String time = "05:30";
+////            LocalDate date = LocalDate.now();
+////            DateTimeFormatter converter = new DateTimeFormatterBuilder()
+////                    .appendPattern("dd-MMM-yyyy").toFormatter();
+////            String datetime = converter.format(date);
+////            datetime += (" "+time);
+////            System.out.println(datetime);
+//
+////            System.out.println(getAtachmentForToday("LAED_DXB_SG_SIR_"));
+////            LocalTime time1 = LocalTime.now();
+////            LocalTime nightTime = LocalTime.of(21,04);
+////            LocalTime eod = LocalTime.of(23,59);
+////            if (time1.compareTo(nightTime)<0)
+////                System.out.println("localTime: "+time1);
+////            validatedateFormate("2023-06-01");
+////            Map<Boolean,String> map = utcToist("2300");
+////            System.out.println(map);
+////            System.out.println(LocalDateTime.now());
+////            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-YYYY");
+////            System.out.println(formatter.format(LocalDate.now()));
+//
+////            LocalDate date = LocalDate.now();
+////            System.out.println(LocalDate.now());
+////            String strDate = LocalDate.now().toString();
+////            System.out.println(LocalDate.parse(strDate).format(DateTimeFormatter.ofPattern("yyyy-MMM-dd")));
+////            String str = "Hi this is shubham jaiswal sending attachment";
+////            byte[] ar = str.getBytes();
+////            System.out.println(ar.toString());
+////            DateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+////            Calendar cal = Calendar.getInstance();
+////            cal.add(Calendar.DAY_OF_MONTH, 5);
+////            String date = formatter.format(cal.getTime());
+////            date += " 23:59";
+////            System.out.println(date);
+//
+//    }
     public int lengthOfLastWord(String s) {
         String [] trimmed = s.trim().split(" ");
         return trimmed[trimmed.length-1].length();

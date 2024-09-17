@@ -2,11 +2,11 @@ package String;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
-
+// r101
 public class AreStringRotation {
     public static void main(String[] args) {
-        String str1 = "ABCD";
-        String str2 = "BCDD";
+        String str1 = "abcde";
+        String str2 = "cdeab";
         areRotation(str1,str2);
     }
 

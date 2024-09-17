@@ -1,0 +1,12 @@
+print "Hi" and "Hello" in below pattern using 2 threads
+
+hi
+hello
+hi
+hello
+hi
+hello
+hi
+hello
+hi
+hello

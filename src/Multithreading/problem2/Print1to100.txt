@@ -1,0 +1,4 @@
+given 2 methods
+1. it will print odd numbers till 100
+2. it will print even numbers till 100
+you have to write logic using above 2 methods to print counting from 1 to 100 in order

@@ -28,11 +28,11 @@ public class BinaryTreeTest {
 //        System.out.println(obj.nodeToRootPath(root,60));
 //        obj.printKLevelDown(root,2);
 //        obj.printKNodesFar(root,37,1);
-//        System.out.println("preorder : "+obj.preorder(root,new ArrayList<>()));
-//        System.out.println("inorder : "+obj.inorder(root,new ArrayList<>()));
-//        System.out.println("postorder : "+obj.postorder(root,new ArrayList<>()));
+//        System.out.println("preorder : "+obj.preorder(root,new ArrayList<>())); //r102
+//        System.out.println("inorder : "+obj.inorder(root,new ArrayList<>()));//r102
+//        System.out.println("postorder : "+obj.postorder(root,new ArrayList<>()));//r102
 //        obj.iterativeTraversal(root);
-//        obj.levelOrder(obj.removeLeaves(root));
+//        obj.levelOrder(obj.removeLeaves(root));//r102
 //        obj.printSingleChild(root,null);
 //        System.out.println(obj.isBST(root));
 //        System.out.println(obj.largestBST(root));
